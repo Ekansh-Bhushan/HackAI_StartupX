@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 
-app = Flask(__name__)
+app = Flask(__name___)
 
 # Your ML model and functions will go here
 
@@ -8,8 +8,11 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/get_data', methods=['POST'])
-def get_data():
+@app.route('/', methods=['POST'])
+
+
+def get_data(response):
+    # Assuming response is an HTTP response object
     data = response.json()
     return jsonify(data)
 
