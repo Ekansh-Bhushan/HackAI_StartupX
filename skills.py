@@ -1,6 +1,6 @@
 import pdfminer.high_level
 import spacy
-# resume_path
+resume_path = """C:\Users\Ekansh\code\hackaifinal\sample1.pdf"""
 def preprocess_resume(resume_path):
     text = ""
     if resume_path.endswith(".pdf"):
