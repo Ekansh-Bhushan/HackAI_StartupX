@@ -1,6 +1,6 @@
 import pdfminer.high_level
 import spacy
-resume_path = """C:\Users\Ekansh\code\hackaifinal\sample1.pdf"""
+resume_path = "Sample1.pdf"
 def preprocess_resume(resume_path):
     text = ""
     if resume_path.endswith(".pdf"):
@@ -23,4 +23,4 @@ def extract_skills(processed_text):
     skills = [ent.text for ent in doc.ents if ent.label_ in ["SKILL", "ORG"]]
     return skills
 
-print(extract_skills(preprocess_resume()))
+print(extract_skills(preprocess_resume(resume_path)))
