@@ -12,7 +12,9 @@ from src.messages.my_email import send_mail_to_user
 with open('src/jobdescibe.txt', mode = 'r') as jobDescription:
     jobDescribe = jobDescription.readlines()
 
-    
+
+finalresume = open('src/FinalResume.csv', mode ='a', newline='') 
+writerReume = csv.writer(finalresume)
 
 count = shortlistedcount=  0
 def readResumeFile(resumepath):
@@ -25,12 +27,15 @@ with open('src/resumepath.csv', mode = 'r') as resumepaths:
     for resumepath in resumepaths:
         count += 1
         skill = readResumeFile(resumepath)
+
         if skill:
                 matches = list(set(jobDescribe).intersection(skill))
-                shortlistedcount += 1
-                prob = (matches/ jobDescribe.len())*100
-                prob_dict = {resumepath : prob}
-                rank.append(prob)
+                if matches > 0:
+                    shortlistedcount += 1
+                    prob = (matches/ jobDescribe.len())*100
+                    prob_dict = {resumepath : prob}
+                    rank.append(prob)
+                    writerReume.writerows(resumepath)
 
         else:
             continue

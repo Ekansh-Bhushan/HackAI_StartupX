@@ -5,13 +5,15 @@ import ssl
 import smtplib
 import config_email
 from src.utilis.userDatabase import user_email
+from src.agents.resumecheck import get_keys_by_value
 
 mail = user_email()
 
+selectedResume = get_keys_by_value()
 
 SENDER_MAIL_PASSWORD = os.environ.get(config_email.SENDER_MAIL_PASSWORD)
 SUBJECT='Resume Shortlisted '
-BODY='Please check the shortlisted resume as per your need.'
+BODY=f'Please check the shortlisted resume as per your need. Candidates are {selectedResume}'
 APP_PASSWORD = config_email.APP_PASSWORD
 
 em=EmailMessage()
