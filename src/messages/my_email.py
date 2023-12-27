@@ -10,8 +10,8 @@ mail = user_email()
 
 
 SENDER_MAIL_PASSWORD = os.environ.get(config_email.SENDER_MAIL_PASSWORD)
-SUBJECT='Alert : The currency rate is gone below/above the threshold value.'
-BODY='lease check the values on the app.'
+SUBJECT='Resume Shortlisted '
+BODY='Please check the shortlisted resume as per your need.'
 APP_PASSWORD = config_email.APP_PASSWORD
 
 em=EmailMessage()

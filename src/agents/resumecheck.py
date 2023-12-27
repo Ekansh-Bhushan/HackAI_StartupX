@@ -5,6 +5,8 @@ import csv
 from uagents import Agent, Context
 from src.skill.skillgiver import preprocess_resume
 from src.skill.skillgiver import extract_skills
+from src.messages.my_email import send_mail_to_user
+
 
 
 with open('src/jobdescibe.txt', mode = 'r') as jobDescription:
@@ -37,13 +39,18 @@ with open('src/resumepath.csv', mode = 'r') as resumepaths:
 
 
 
+def get_keys_by_value(dict, value):
+    return [key for key, val in dict.items() if val == value]
+
 def ResumeUpdater():
     agent = Agent(name="agent", seed = "agent recover phase")
     @agent.on_interval(period=86400) #update in a day 
     async def ResumeStatusUpdate(ctx: Context):
         ctx.logger.info(f'Today we got these many resume {count} and we have collected the shortisted resume : {shortlistedcount}')
     try:
-         if shortlistedcount :
+         if shortlistedcount:
+              
+              
               send_mail_to_user()
 
     except Exception as e:
